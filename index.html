@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table-component</title>
+    <script type="module" src="./src/data-grid.ts"></script>
+  </head>
+  <body>
+    <div style="display: flex; justify-content: center; width: 100%; margin-top: 20em">
+      <data-grid id="data_grid">
+        <template sort-asc>
+          &uarr;
+        </template>
+        <template sort-desc>
+          &darr;
+        </template>
+        <data-col field="id" label="ID" sortable></data-col>
+        <data-col field="name" label="Name" sortable></data-col>
+        <data-col field="actions">
+          <button bind-data-name="name" onclick="dup(this.dataset.name)">
+            click
+          </button>
+        </data-col>
+      </data-grid>
+    </div>
+    <script>
+      document.getElementById("data_grid").data = [
+        {
+          id: 1,
+          name: "Dita"
+        },
+        {
+          id: 2,
+          name: "Peter"
+        },
+        {
+          id: 3,
+          name: "Suki"
+        },
+        {
+          id: 4,
+          name: "Takumi"
+        },
+        {
+          id: 5,
+          name: "Mogi"
+        }
+      ]
+
+      function dup(name) {
+        const grid = document.getElementById("data_grid")
+        grid.data = [...grid.data, {
+          id: grid.data.at(-1).id + 1,
+          name: name
+        }]
+      }
+    </script>
+  </body>
+</html>
