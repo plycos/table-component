@@ -17,11 +17,6 @@ export default defineConfig([
 		plugins: [minifyHTML()],
 		output: componentOutput(),
 	},
-	{
-		input: 'src/simple-table.ts',
-		plugins: [minifyHTML()],
-		output: componentOutput(),
-	},
 	// input: {
 	// 	"simple-table": "src/simple-table.ts",
 	// 	"data-grid": "src/data-grid.ts",
